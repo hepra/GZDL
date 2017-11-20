@@ -1,0 +1,47 @@
+﻿<Window x:Class="HZGZDL.YZFJKGZXFXY.UI.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" WindowStartupLocation="CenterOwner" 
+       Closing="Window_Closing" Loaded="Window_Loaded"
+        Title="连接仪器" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="目标IP:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBox Grid.Column="1" Name="txtIPaddress" BorderBrush="Green" Margin="5,0"  VerticalAlignment="Center" Height="40" FontSize="30">192.168.1.5</TextBox>
+        </Grid><!--第一行-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="端口:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBox Grid.Column="1" Name="txtPort" BorderBrush="Green" Margin="5,0"  VerticalAlignment="Center" Height="40" FontSize="30">4000</TextBox>
+        </Grid><!--第二行-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="本地IP:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBox Grid.Column="1" Name="txtLoalIPaddress" BorderBrush="Green" Margin="5,0"  VerticalAlignment="Center" Height="40" FontSize="30">127.0.0.1</TextBox>
+        </Grid><!--第三行-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="btnOneKeyChangeLocalIPadress" Content="一键修改本地IP" FontSize="20" Background="AntiqueWhite" ></Button>
+            <Button Grid.Column="2" Name="btnConfirmConnection" Content="连接" FontSize="20" Background="AntiqueWhite" ></Button>
+        </Grid> <!--第四行-->
+    </Grid>
+</Window>

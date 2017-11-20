@@ -1,0 +1,224 @@
+﻿<Window x:Class="HZGZDL.YZFJKGZXFXY.UI.TransFormerSetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          Background="AliceBlue" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" 
+        TextOptions.TextFormattingMode="Display"
+        Title="变压器参数设置" FontFamily="仿宋" Height="600" Width="400" ResizeMode="NoResize" HorizontalAlignment="Center" VerticalAlignment="Center" 
+        >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/GroupBoxStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.3" Stretch="None" AlignmentX="Left">
+                <VisualBrush.Visual>
+                    <TextBlock FontStyle="Italic" Text="请输入内容"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value=" #FFFFFF"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#2299ff"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="BorderThickness" Value="4"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="BorderBrush" Value="#ffff11"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style  TargetType="TextBlock">
+                <Setter Property="FontSize"  Value="15"></Setter>
+                <Setter Property="FontFamily" Value="黑体"></Setter>
+                <Setter Property="FontWeight" Value="Normal"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize"  Value="14"></Setter>
+                <Setter Property="FontFamily" Value="黑体"></Setter>
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel LastChildFill="True">
+                                <TextBlock DockPanel.Dock="Right"
+                                           Foreground="Red" FontSize="14" FontWeight="Bold"
+                                           ToolTip="{Binding ElementName=adornerPlaceholder,
+                                           Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                    *
+                                </TextBlock>
+                                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="3">
+                                    <AdornedElementPlaceholder Name="adornerPlaceholder"></AdornedElementPlaceholder>
+                                </Border>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="Text" Value="{x:Null}">
+                        <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                    </Trigger>
+                    <Trigger Property="Text" Value="">
+                        <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                    </Trigger>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip"
+                                Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="Margin" Value="0,5"></Setter>
+                <Setter Property="Background" Value="AliceBlue"></Setter>
+                <Setter Property="FontSize"  Value="14"></Setter>
+                <Setter Property="FontFamily" Value="黑体"></Setter>
+                <Setter Property="FontWeight" Value="Normal"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid  x:Name="LayoutRoot" Background="AliceBlue ">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition  Height="0.15*"></RowDefinition>
+            <RowDefinition  Height="0.15*"></RowDefinition>
+            <RowDefinition  Height="0.55*"></RowDefinition>
+            <RowDefinition  Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <!--第一部分-->
+        <Grid Column="0" Grid.Row="0" Margin="15,0" x:Name="part1" >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0">选择\新增 单位:</TextBlock>
+            <TextBlock  Grid.Column="0" Grid.Row="1" >选择\新增 变压器:</TextBlock>
+            <TextBlock  Grid.Column="0" Grid.Row="2" >变压器型号:</TextBlock>
+            <ComboBox Name="cmbExistCompany" FontFamily="黑体" Background="AliceBlue" BorderThickness="1" BorderBrush="Black" FontSize="16" Height="25" IsEditable="True" Grid.Column="1" Grid.Row="0" Text="{Binding Path=_1ItsUnitName}"  SelectedItem="{Binding Path=_1ItsUnitName}"></ComboBox>
+            <ComboBox Name="cmbExistTransFormers" FontFamily="黑体" Background="AliceBlue" BorderThickness="1" BorderBrush="Black" FontSize="16" Height="25" IsEditable="True" Grid.Column="1"  Text="{Binding Path=_2TransformerName}"  Grid.Row="1"></ComboBox>
+            <TextBox Name="tbTransFormModel" Height="25" Grid.Column="1" Grid.Row="2"  ></TextBox>
+        </Grid>
+        <!--      ......     第2部分      ......    -->
+        <Grid Grid.Column="0" Grid.Row="1"  Margin="15,0" x:Name="part2" >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" >相数:</TextBlock>
+            <TextBlock  Grid.Column="0" Grid.Row="1" >绕组数:</TextBlock>
+            <TextBlock  Grid.Column="0" Grid.Row="2"  >绕组接线方式:</TextBlock>
+
+            <RadioButton Grid.Column="1" Grid.Row="0" Name="cb1P" GroupName="phase" VerticalAlignment="Center">单相</RadioButton>
+            <RadioButton Grid.Column="2" Grid.Row="0" Name="cb3P" GroupName="phase" >三相</RadioButton>
+            <RadioButton Name="cb2RZ"  Grid.Column="1" Grid.Row="1" GroupName="RZ"  >双绕组</RadioButton>
+            <RadioButton Name="cb3RZ"  Grid.Column="2" Grid.Row="1" GroupName="RZ"  >三绕组</RadioButton>
+            <RadioButton Grid.Column="1" Grid.Row="2"  Name="cbY" GroupName="WindingConnectMode"  >Y型</RadioButton>
+            <RadioButton Grid.Column="2" Grid.Row="2"  Name="cbYO" GroupName="WindingConnectMode"   >YN型</RadioButton>
+            <RadioButton Grid.Column="3" Grid.Row="2"  Name="cbTangle" GroupName="WindingConnectMode" >三角形</RadioButton>
+        </Grid>
+        <GroupBox Header="开关属性配置" FontSize="15" FontFamily="黑体" FontWeight="Bold" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Margin="5,10,5,0" BorderThickness="1" BorderBrush="Gainsboro">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"></RowDefinition>
+                    <RowDefinition Height="0.4*"></RowDefinition>
+                    <RowDefinition Height="0.2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Canvas Grid.Row="2" Name="canvas_picture" IsEnabled="{Binding ElementName=cb_多个分接位,Path=IsChecked}" >
+                    <Path Width="{Binding ElementName=canvas_picture, Path=ActualWidth}" Height="{Binding ElementName=canvas_picture,Path=ActualHeight}" x:Name="PathFillColor" Stroke="Gray" StrokeThickness="5" Data="M 0,50 A 120 60 0 0 1 370 50  M 185,-40 185,-20 M 115 -35 120 -21 M 255,-35 250 -20 "  Stretch="Uniform" >
+                    </Path >
+                    <TextBlock Canvas.Left="155" TextWrapping="Wrap" Text="中间位置" FontFamily="黑体" Foreground="Blue" Canvas.Top="50"/>
+                    <RadioButton Name="lb_9a"  GroupName="123"  Content="9a" Foreground="Gray" FontSize="16" Canvas.Left="140" Canvas.Top="20" Width="35" Height="30"/>
+                    <RadioButton Name="lb_9b"  GroupName="123" Content="9b" Foreground="Red" IsChecked="True" FontSize="16" Canvas.Left="175" Canvas.Top="20" Width="35" Height="30"/>
+                    <RadioButton Name="lb_9c"  GroupName="123" Content="9c" Foreground="Gray" FontSize="16" Canvas.Left="210" Canvas.Top="20" Width="35" Height="30"/>
+                </Canvas>
+                <!--      ......     第3部分      ......    -->
+                <Grid Grid.Column="0" Grid.Row="1" Margin="0,0,5,0" x:Name="part3" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="109*"></ColumnDefinition>
+                        <ColumnDefinition Width="165*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Grid.Row="0"  >开关起始工作位置:</TextBlock>
+                    <TextBlock  Grid.Column="0" Grid.Row="1"  >开关结束工作位置:</TextBlock>
+                    <TextBlock  Grid.Column="0" Grid.Row="2"  >中间位置:</TextBlock>
+                    <TextBox Name="tbStartWorkingPosition" Grid.Column="1" Grid.Row="0" Height="25"    />
+                    <TextBox Name="tbEndWorkingPosition"   Grid.Column="1" Grid.Row="1" Height="25"  />
+                    <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Height="30" Orientation="Horizontal">
+                        <TextBox Name="tbMidPosition"   Height="25" Width="79"   />
+                        <CheckBox Name="cb_多个分接位" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" FontStyle="Normal" FontWeight="Light"  Content="是否多个分接位"></CheckBox>
+                    </StackPanel>
+                </Grid>
+
+                <!--      ......     第4部分      ......    -->
+                <Grid  Grid.Column="0" Grid.Row="0" Margin="0,10,5,0" x:Name="part4" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Grid.Row="0"  >开关分列数:</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" >开关型号:</TextBlock>
+                    <TextBlock  Grid.Column="0" Grid.Row="2"  >开关生产厂家:</TextBlock>
+                    <TextBlock  Grid.Column="0" Grid.Row="3"  >开关出厂序号:</TextBlock>
+                    <ComboBox Name="cmbSwitchModel"  Grid.Column="1" Grid.Row="1"  FontFamily="黑体" Background="AliceBlue" BorderThickness="1" BorderBrush="Black" FontSize="16" Height="25" IsEditable="True"  ></ComboBox>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <RadioButton  Name="cbOne" Margin="0,0,30,0" >单列</RadioButton>
+                        <RadioButton  Name="cbTwo" Margin="0,0,30,0" >双列</RadioButton>
+                        <RadioButton  Name="cbThrid">三列</RadioButton>
+                    </StackPanel>
+                    <ComboBox Name="cmbSwitchProducerName"
+                              Grid.Column="1" Grid.Row="2" 
+                              FontFamily="黑体" Background="AliceBlue"
+                              BorderThickness="1" BorderBrush="Black" FontSize="16" 
+                              Height="25" IsEditable="True"   ></ComboBox>
+
+                    <TextBox  Name="tbSwitchProductionCode" Grid.Column="1" Grid.Row="3" 
+                          Height="25"
+                         ></TextBox>
+                </Grid>
+            </Grid>
+
+        </GroupBox>
+
+        <!--      ......     第5部分      ......    -->
+        <Grid x:Name="part5" Grid.Column="0" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="btnTransformerParaConfirm" Style="{StaticResource ResourceKey=GlassButton}" Grid.Column="1" Width="80"   Height="35" FontFamily="黑体" FontSize="16"  Content="确认"  ></Button>
+            <Button Name="btnTransformerParaCancel" Style="{StaticResource ResourceKey=GlassButton}" Grid.Column="0" Width="80"   Height="35" FontFamily="黑体" FontSize="16"   Content="取消"   ></Button>
+        </Grid>
+    </Grid>
+</Window>
