@@ -187,7 +187,7 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
               using (FileStream fsWrite = new FileStream(file_name, mode, access, FileShare.ReadWrite))
              {
                  byte[] buffer = new byte[size+10];
-                 buffer = Encoding.UTF8.GetBytes(data + "/r/n");
+                 buffer = Encoding.UTF8.GetBytes(data + "\r\n");
                  fsWrite.Write(buffer, 0, buffer.Length);
              }
           }
@@ -229,5 +229,26 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
                 fsWrite.Write(buffer, 0, buffer.Length);
             }
         }
+
+	   static public List<string> readFileToList(string fileName) {
+		   FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+		   List<string> list = new List<string>();
+		   StreamReader m_streamReader = new StreamReader(fs,System.Text.Encoding.Default);//中文乱码加上System.Text.Encoding.Default,或则 System.Text.Encoding.GetEncoding("GB2312")
+		   //使用StreamReader类来读取文件
+		   m_streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
+		   // 从数据流中读取每一行，直到文件的最后一行，并在richTextBox1中显示出内容
+
+
+		   string strLine = m_streamReader.ReadLine();
+		   while (strLine != null) {
+			   list.Add(strLine);
+			   strLine = m_streamReader.ReadLine();
+		   }
+		   //关闭此StreamReader对象
+		   m_streamReader.Close();
+		   return list;
+
+
+	   }
     }
 }

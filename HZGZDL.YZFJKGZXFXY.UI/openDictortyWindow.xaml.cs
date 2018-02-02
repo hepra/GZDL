@@ -18,6 +18,28 @@ namespace HZGZDL.YZFJKGZXFXY.UI {
 	public partial class openDictortyWindow : Window {
 		public openDictortyWindow() {
 			InitializeComponent();
+			btnOpen.Click += btnOpen_Click;
+		}
+
+		void btnOpen_Click(object sender, RoutedEventArgs e) {
+		string path = 	Common.MyFileHelper.OpenFile_getPath(@"F:\dahe\GZDL411CSharp\HZGZDL.YZFJKGZXFXY.UI\GZDL\HZGZDL.YZFJKGZXFXY.UI\bin\Debug\TestData");
+		var data = Common.MyFileHelper.OpenFile(path, 964, 0);
+			int stringlength = 0;
+			int flag =0;
+		for (int i = 0; i < data.Length; i++) {
+			if (data[i] == 0) {
+				flag++;
+				stringlength = i;
+			}
+			else {
+				flag = 0;
+			}
+			if (flag == 6) {
+				stringlength -= 4;
+				break;
+			}
+		}
+		txtInfo.Text = Encoding.Unicode.GetString(data, 0, stringlength);
 		}
 
 		private void Window_Drop(object sender, DragEventArgs e) {

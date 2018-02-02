@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="openDictortyWindow" Height="300" Width="300" AllowDrop="True">
     <Grid Margin="0,0,0,17">
-        <Canvas Name="myParentsCanvas"  Background="OldLace" MouseEnter="myParentsCanvas_MouseEnter">
-            <Button Content="Button" Canvas.Left="10" Canvas.Top="221" Width="75" Click="Button_Click"/>
-        </Canvas>
+        <TextBox Name="txtInfo" HorizontalAlignment="Left" Height="223" Margin="10,10,0,0"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="163"/>
+        <Button  Name="btnOpen" Content="Button" HorizontalAlignment="Left" Margin="193,198,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

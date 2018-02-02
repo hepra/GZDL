@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI.exe" version="1.0.0.9" publicKeyToken="0000000000000000" language="zh-Hans" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI.exe" version="1.0.0.13" publicKeyToken="0000000000000000" language="zh-Hans" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="HZGZDL.YZFJKGZXFXY.UI.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -39,6 +39,41 @@
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.DirectSound" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.DirectX" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.DirectXFiles" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.DirectXInit" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.Licensing" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.MathCore" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Arction.WPF.SignalTools" version="6.4.1.4001" publicKeyToken="6484D7BB14B95DD3" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
   <dependency>
@@ -90,62 +125,62 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.BLL.dll" size="6144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.BLL.dll" size="11264">
       <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hGKFBwstv0quKyQVa9BqUXnxOlE=</dsig:DigestValue>
+        <dsig:DigestValue>9ECAEYbi6rijV41YyV71tLphxnI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.Common.dll" size="164352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.Common.dll" size="196608">
       <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.Common" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>RNZjTfAfLorCgYLe42K7hNR0J8c=</dsig:DigestValue>
+        <dsig:DigestValue>U4BFshA5rKpmz00yVIgBeWWqOSg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.DEL.dll" size="6656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.DEL.dll" size="7168">
       <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.DEL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ka+q01MjCwYDKcJ9F+dynz0BoqE=</dsig:DigestValue>
+        <dsig:DigestValue>z00is6kiLiF3EDYcM80105rAzes=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.Model.dll" size="9728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.Model.dll" size="17408">
       <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.Model" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>nzCowHZHnWA6MwnlDizPxIJVg78=</dsig:DigestValue>
+        <dsig:DigestValue>hniZOpS9TYrh3Nu57hGWD/oF9NI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.UI.exe" size="89584">
-      <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HZGZDL.YZFJKGZXFXY.UI.exe" size="3861488">
+      <assemblyIdentity name="HZGZDL.YZFJKGZXFXY.UI" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4029rWdr1/ZD9GnRDeMUkLT11Ik=</dsig:DigestValue>
+        <dsig:DigestValue>mwDC9q2sEa/pKH/eSXmJ+kjrDls=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -314,6 +349,24 @@
       <dsig:DigestValue>AmX0oDSVDmHl2Bzd3wsHDV9Dsa0=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Image\configration.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XkL98M6jYwrYAP6mU+MzF2YZTpc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Image\file.png" size="5035">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6m/Co97bcB9c/bEi2+nO3q4JDOY=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Image\file23.jpg" size="123097">
     <hash>
       <dsig:Transforms>
@@ -321,6 +374,33 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>C0NY/N55OIcwZ9dn9pxD05sCQEg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Image\GZDL.png" size="17901">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GJFa5otDQ6nyVLMnvkJRLIHtMpQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Image\set.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>zhTnw7J/uporeydXG1YLteI+8to=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Image\systemset.png" size="35740">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>y7tlAUSU+YYUY/BLH52j8/qsNnY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Image\treeViewItemICO\file2.png" size="51459">
@@ -404,13 +484,76 @@
       <dsig:DigestValue>xIAv7pk/wEdbsmxkN9N+4CGffMU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Libs\TeeChart.WPF.dll" size="3661312">
+  <file name="Libs\AccessDatabaseEngine.exe" size="26646944">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>QwLHUGIoMVuDqdrTWfVLJaCw+iQ=</dsig:DigestValue>
+      <dsig:DigestValue>u5pmdfMZOkE6qBwmy0z830UN7IY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Libs\adodb.dll" size="110592">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jynB3qMgo1Dc2GoQqehY0lCH4Yo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Libs\Interop.ADOX.dll" size="23040">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>eDTcwvrOa/B2mkoQRzrXvgnSD1E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Libs\Interop.Office.dll" size="434688">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>wK75SyrDPeo3ZvhTMjh60RnYPVQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Libs\libfftw3-3.dll" size="2712765">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>P/XxsVry2A6AgfsxMhkrNbOyzIw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Libs\stdole.dll" size="16384">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>DEMNeVVaj0AXJ5RbDj3Dzpuhu+o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\ImageButton.xaml" size="6226">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BcXkhUunH3yQSf1Zdhj+uxKBQ0c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\修改IP1网段.bat" size="155">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>o4NEezjoTGSBqMhv7e8oF4uOVIw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

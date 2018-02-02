@@ -73,4 +73,9 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
 			return new Complex((c1.Re * c2.Re + c1.Im * c2.Im) * temp, (-c1.Re * c2.Im + c2.Re * c1.Im) * temp);
 		}
 	}
+
+	/// <summary>
+	/// 复数类
+	/// </summary>
+	
 }

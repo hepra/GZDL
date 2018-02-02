@@ -131,8 +131,7 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
 			ICCEmbedded.SharpZipLib.Zip.FastZip fz = new ICCEmbedded.SharpZipLib.Zip.FastZip(evt);
 			try {
 				fz.CreateEmptyDirectories = true;
-				fz.CreateZip(zipFilePath, sourceDir, false, "");
-				
+				fz.CreateZip(zipFilePath, sourceDir, true, "");
 			}
 			catch (ICCEmbedded.SharpZipLib.SharpZipBaseException e) {
 				string msg = e.Message;

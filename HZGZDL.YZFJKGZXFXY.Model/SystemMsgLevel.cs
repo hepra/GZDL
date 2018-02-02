@@ -5,8 +5,8 @@ using System.Text;
 
 namespace HZGZDL.YZFJKGZXFXY.Model {
 	public enum SystemMsgLevel {
-		WARING,
-		INFO,
-		ERROR,
+		WARING =0,
+		INFO = 1,
+		ERROR =2,
 	}
 }

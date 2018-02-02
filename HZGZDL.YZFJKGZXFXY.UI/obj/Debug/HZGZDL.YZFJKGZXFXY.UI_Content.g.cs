@@ -8,6 +8,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/gzdl.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/accessdatabaseengine.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/adodb.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/interop.adox.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/interop.office.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/libfftw3-3.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/stdole.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/imagebutton.xaml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/%e4%bf%ae%e6%94%b9ip1%e7%bd%91%e6%ae%b5.bat")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/1bianyaqipeizhi.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/1bianyaqipeizhi_disable.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/2kaishiceshi.png")]
@@ -24,7 +33,11 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/7zantingceshi_disable.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/8chongqishebei.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/8chongqishebei_disable.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/configration.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/file23.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/file.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/set.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/systemset.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/treeview_local.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/treeview_network.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/treeviewnode.png")]
@@ -34,6 +47,5 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/treeview_date.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/file2.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/treeviewitemico/treeviewdata.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libs/teechart.wpf.dll")]
 
 

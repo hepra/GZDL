@@ -30,8 +30,8 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
 				try {
 					if (UDPSever == null) {
 						UDPSever = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+						UDPSever.Bind(local);
 					}
-					UDPSever.Bind(local);
 					this.remote = remote;
 				}
 				catch (Exception e) {
@@ -52,7 +52,9 @@ namespace HZGZDL.YZFJKGZXFXY.Common {
 					if (IsDataReceive) {
 						Message_receive(buffer);
 					}
-					socket.BeginReceive(buffer, 0, RecieveBufferSize, SocketFlags.None, new AsyncCallback(ReceiveCallback), UDPSever);
+					if (length > 0) {
+						socket.BeginReceive(buffer, 0, RecieveBufferSize, SocketFlags.None, new AsyncCallback(ReceiveCallback), UDPSever);
+					}
 				}
 				catch (Exception e) {
 					//UDPSever.Close();

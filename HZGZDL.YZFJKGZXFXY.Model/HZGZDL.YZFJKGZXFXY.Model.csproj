@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="Commander.cs" />
     <Compile Include="myEFTransFormerInfo.cs" />
-    <Compile Include="ParameterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemMsgLevel.cs" />
     <Compile Include="SystmMsgCollect.cs" />
@@ -66,7 +65,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

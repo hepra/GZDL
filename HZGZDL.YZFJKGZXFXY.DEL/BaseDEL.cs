@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -19,8 +20,8 @@ namespace HZGZDL.YZFJKGZXFXY.DEL {
 				int  len =  db.SaveChanges();
 				return len;
 			}
-			catch (Exception e) {
-				return e.Message.Length;
+			catch (System.Data.Entity.Infrastructure.DbUpdateException err) {
+				return err.Message.Length;
 			}
 			
 		}
@@ -38,9 +39,33 @@ namespace HZGZDL.YZFJKGZXFXY.DEL {
 		/// </summary>
 		/// <param name="entity"></param>
 		/// <returns></returns>
-		public bool EditEntity(T entity) {
-			db.Entry<T>(entity).State = System.Data.Entity.EntityState.Modified;
+		public bool EditEntity(T entity,T newEntity) {
+			
+			db.Entry<T>(entity).CurrentValues.SetValues(newEntity);
 			return db.SaveChanges() > 0;
+		}
+		/// <summary>
+		/// 修改
+		/// </summary>
+		/// <param name="entity"></param>
+		/// <param name="newEntity"></param>
+		/// <returns></returns>
+		public bool Modfiy(T Entity) {
+			int itemCount = 0;
+			if (db.Entry<T>(Entity).State == EntityState.Modified) {
+				itemCount = db.SaveChanges();
+			}
+			else if (db.Entry<T>(Entity).State == EntityState.Detached) {
+				try {
+					db.Set<T>().Attach(Entity);
+					db.Entry<T>(Entity).State = EntityState.Modified;
+				}
+				catch (InvalidOperationException) {
+				}
+				itemCount= db.SaveChanges();
+			}
+			return itemCount>0;  
+
 		}
 		/// <summary>
 		/// 查询
@@ -71,6 +96,9 @@ namespace HZGZDL.YZFJKGZXFXY.DEL {
 				temp = temp.OrderByDescending(orderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
 			}
 			return temp;
+		}
+		public bool SaveChange() {
+			return db.SaveChanges() > 0;
 		}
 	}
 }

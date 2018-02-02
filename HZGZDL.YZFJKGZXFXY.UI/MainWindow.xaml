@@ -1,51 +1,215 @@
-﻿<Window x:Class="HZGZDL.YZFJKGZXFXY.UI.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:Chart ="clr-namespace:Steema.TeeChart.WPF;assembly=TeeChart.WPF"
         xmlns:myTree="clr-namespace:HZGZDL.YZFJKGZXFXY.Common;assembly=HZGZDL.YZFJKGZXFXY.Common"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="有载开关在线分析仪(杭州国洲电力科技有限公司)"  Height="768" Width="1278" Loaded="Window_Loaded"  MouseMove="Window_MouseMove" SizeChanged="Window_SizeChanged">
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:GUI="clr-namespace:Arction.WPF.SignalTools.GUI;assembly=Arction.WPF.SignalTools" x:Class="HZGZDL.YZFJKGZXFXY.UI.MainWindow"
+        Title="有载开关在线分析仪(杭州国洲电力科技有限公司)" Icon="/Image/GZDL.png"  WindowStartupLocation="CenterScreen" Closed="Window_Closed"  Height="768" Width="1278" Loaded="Window_Loaded"  MouseMove="Window_MouseMove" SizeChanged="Window_SizeChanged">
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Resources/GroupBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Resources/ImageButton.xaml"/>
+                <ResourceDictionary Source="/Resources/TextButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBlock}"  x:Key="myTextblockTriger">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="Foreground" Value="#ffa500"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}" x:Name="tcolorWhite">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style x:Key="myButtonStyle1" TargetType="{x:Type Button}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask)" Storyboard.TargetName="contentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <Cursor>Hand</Cursor>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask)" Storyboard.TargetName="contentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="contentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <Cursor>Hand</Cursor>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="contentPresenter">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="button">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="#FFD31919"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="button">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="#FFEC2828"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="button">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background)" Storyboard.TargetName="button">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="button">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="#FF2C2626"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="button">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="#FFE0DADA"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Button x:Name="button" Content="Button" RenderTransformOrigin="0.5,0.5">
+                                    <Button.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Button.RenderTransform>
+                                </Button>
+                                <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RenderTransformOrigin="0.5,0.5">
+                                    <ContentPresenter.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True"/>
+                                <Trigger Property="IsDefaulted" Value="True"/>
+                                <Trigger Property="IsMouseOver" Value="True"/>
+                                <Trigger Property="IsPressed" Value="True"/>
+                                <Trigger Property="IsEnabled" Value="False"/>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+
 
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="GRID">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="75"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2"   Grid.Row="0" Background="#444444">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Menu Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">文件(F)</Menu>
-                <Menu Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">设置(S)</Menu>
-                <Menu Grid.Column="2" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">XXX(F)</Menu>
-                <Menu Grid.Column="3" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">XXX(F)</Menu>
-                <Menu Grid.Column="4" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">XXX(F)</Menu>
-                <Menu Grid.Column="5" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">XXX(F)</Menu>
+                <Menu Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">
+                    <System:String>文件(F)</System:String>
+                </Menu>
+                <Menu Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">
+                    <System:String>设置(S)</System:String>
+                </Menu>
+                <Menu Grid.Column="2" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue" Name="Menu_LogShow" MouseLeftButtonUp="Menu_LogShow_MouseLeftButtonUp">
+                    <TextBlock><Run Text="日志(Log)" MouseLeftButtonDown="Menu_LogShow_MouseLeftButtonUp"/></TextBlock>
+                    <!--<MenuItem x:Name="_menuErrorLog" >
+                        <System:String>查看错误日志</System:String>
+                    </MenuItem>
+                    <MenuItem x:Name="_menuInfoLog"  >
+                        <System:String>查看运行日志</System:String>
+                    </MenuItem>
+                    <MenuItem x:Name="_menuDataLog" >
+                        <System:String>查看数据日志</System:String>
+                    </MenuItem>-->
+                </Menu>
+                <Menu Grid.Column="3" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">
+                    <System:String>.</System:String>
+                </Menu>
+                <Menu Grid.Column="4" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">
+                    <System:String>.</System:String>
+                </Menu>
+                <Menu Grid.Column="5" VerticalAlignment="Center" FontSize="14" FontFamily="黑体" Background="Transparent" Foreground="AliceBlue">
+                    <System:String>.</System:String>
+                </Menu>
             </Grid>
 
         </Grid>
@@ -53,218 +217,274 @@
         <Grid Grid.ColumnSpan="2"  Grid.Row="1">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#fffffd" Offset="0"/>
-                    <GradientStop Color="#99cccc" Offset="0.6"/>
-                    <GradientStop Color="#99CCFF" Offset="1"/>
+                    <GradientStop Color="#ffffff" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="0.5"/>
+                    <GradientStop Color="#000000" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="btnConnectDevice" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/3lianjieyiqi.png" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">连接仪器</TextBlock>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Image" Property="Source" Value="/Image/3lianjieyiqi_diable.png" >
-                                </Setter>
-                                <Setter TargetName="Text" Property="Foreground" Value="Gray"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Grid.Column="0"  Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="连接仪器" x:Name="btnConnectDevice" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="AUTO" >
+                <Image  Stretch="Fill" Source="/Image/connect_12.png" VerticalAlignment="Top"  Height="40" Width="40" />
             </Button>
             <!--连接仪器-->
-
-            <Button Grid.Column="1" Name="btnSetInfo" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/1bianyaqipeizhi.png" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">设置变压器信息</TextBlock>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Image" Property="Source" Value="/Image/1bianyaqipeizhi_disable.png" >
-                                </Setter>
-                                <Setter TargetName="Text" Property="Foreground" Value="Gray"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Grid.Column="1" Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="设置变压器信息" x:Name="btnSetInfo" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO"  Click="btnSetInfo_Click">
+                <Image  Stretch="Fill" Source="/Image/configure.png" VerticalAlignment="Top"  Height="40" Width="40" />
             </Button>
             <!--配置变压器信息-->
 
-            <Button Grid.Column="2" Name="btnStartTest" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/2kaishiceshi.png" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">开始测试</TextBlock>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Image" Property="Source" Value="/Image/2kaishiceshi_disable.png" >
-                                </Setter>
-                                <Setter TargetName="Text" Property="Foreground" Value="Gray"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Grid.Column="2"  Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="开始测试"  x:Name="btnStartTest"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
+                <Image   Stretch="Fill" Source="/Image/Start.png" VerticalAlignment="Top"  Height="40" Width="40" />
             </Button>
             <!--开始测试-->
 
-            <Button Grid.Column="3" Name="btnFFTchange" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/8chongqishebei.png" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">FFT变化</TextBlock>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Image" Property="Source" Value="/Image/8chongqishebei_disable.png" >
-                                </Setter>
-                                <Setter TargetName="Text" Property="Foreground" Value="Gray"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <!--FFT变化-->
-
-            <Button Grid.Column="4" Name="btnStop"  VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False" Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/5tingzhiceshi.png" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">停止测试</TextBlock>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Image" Property="Source" Value="/Image/5tingzhiceshi_disable.png" >
-                                </Setter>
-                                <Setter TargetName="Text" Property="Foreground" Value="Gray"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Grid.Column="3"   Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="停止测试"   x:Name="btnStop"  VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False" Width="AUTO" >
+                <Image x:Name="Image" Stretch="Fill" Source="/Image/Stop.png" VerticalAlignment="Top"  Height="40" Width="40" />
             </Button>
             <!--停止测试-->
 
-            <Button Grid.Column="5" Name="btnOpenFile" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
-                <Button.Template >
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <Image Name="Image" Stretch="Fill" Source="/Image/file23.jpg" VerticalAlignment="Center"  Height="50" Width="50" />
-                            <TextBlock Name="Text" FontSize="15" VerticalAlignment="Center">打开文件</TextBlock>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Grid.Column="4"   Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="打开文件"   x:Name="btnOpenFile" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" >
+                <Image  Stretch="Fill" Source="/Image/file.png" VerticalAlignment="Top"  Height="40" Width="40" />
             </Button>
             <!--打开文件-->
-            <StackPanel Orientation="Horizontal" Grid.Column="6">
-                <TextBox Name="tbAxisCount" Width="70" Height="30"></TextBox>
-                <Button Name="btnInitChart" Width="60" Height="30" Click="btnInitChart_Click">重置Axis</Button>
-            </StackPanel>
+            <Button Grid.Column="5"   Style="{DynamicResource ImageButtonStyle}"  Foreground="White" BorderBrush="White" FontSize="16" Height="60" Tag="系统设置"   x:Name="btnTestSetting" VerticalAlignment="Center" HorizontalAlignment="Center" Width="AUTO" Click="btnTestSetting_Click" >
+                <Image Stretch="Fill"  Source="/Image/systemset.png" VerticalAlignment="Top"  Height="40" Width="40" />
+            </Button>
+            <!--系统设置-->
 
-            <Button Name="btnCompress" Grid.Column="7"  Width="60" Height="30" Click="btnCompress_Click">压缩</Button>
-
+            <Button Style="{StaticResource TextButtonStyle}" Height="25" Width="60" TabIndex="10" Background="Black" Foreground="White" BorderBrush="White" x:Name="btnCompress" Grid.Column="7"  Click="btnCompress_Click" Content="压缩"/>
 
         </Grid>
         <!-- 第二层 Button-->
-        <Grid Grid.Row="3" Name="ChartGrid">
-            <Canvas Name="myParentCanvas" >
-                <Chart:TChart  Name="Chart" Loaded="TChart_Loaded"></Chart:TChart>
-                <Canvas Name="myChartCanvas" Background="White">
-                    <GroupBox  Name="myGroupBoxInChart" BorderThickness="0" HorizontalAlignment="Left">
-                        <Grid HorizontalAlignment="Left">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition Height="30"></RowDefinition>
-                                <RowDefinition Height="30"></RowDefinition>
-                                <RowDefinition ></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <CheckBox Grid.ColumnSpan="2" Name="cb_ShowCursor" IsChecked="False" Grid.Row="0">显示游标</CheckBox>
-                            <CheckBox Grid.ColumnSpan="2" Name="cb_followMouse" IsChecked="False" Grid.Row="1">游标跟随鼠标</CheckBox>
-
-                            <Label Name="lab1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left">电流[通道1]:</Label>
-                            <Label Name="lab2" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Left">电流[通道2]:</Label>
-                            <Label Name="lab3" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" >电流[通道3]:</Label>
-                            <Label Name="lab4" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Left">振动[通道1]:</Label>
-                            <Label Name="lab5" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Left">振动[通道2]:</Label>
-                            <Label Name="lab6" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Left">振动[通道3]:</Label>
-                            <Button Name="btnLeftMove" Width="40" Grid.Row="8" Grid.Column="0" Margin="1">左移</Button>
-                            <Button Name="btnRightMove" Width="40" Grid.Row="8" Grid.Column="1" Margin="1">右移</Button>
-                            <Button Name="btnEnlarge" Width="40" Grid.Row="9" Grid.Column="0" Margin="1">放大</Button>
-                            <Button Name="btnNarrow"  Width="40" Grid.Row="9" Grid.Column="1" Margin="1">缩小</Button>
-                            <TextBlock  Grid.Row="10" Grid.ColumnSpan="2" Margin="1">注:双击表格还原</TextBlock>
-                        </Grid>
-                    </GroupBox>
+        <Grid Grid.Row="3" Grid.Column="0" x:Name="ChartGrid">
+            
+            <Canvas x:Name="myParentCanvas" Background="#333333"  >
+                <Canvas Name="myFFTCanvas" Background="#333333"  Visibility="Hidden" >
+                    <Grid Name="myFFTgrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Chart:TChart  Grid.Row="0" x:Name="ChartAD" Loaded="TChart_Loaded"/>
+                        <Chart:TChart  Grid.Row="1"   x:Name="ChartFFT" Loaded="TChart_Loaded"/>
+                    </Grid>
                 </Canvas>
-                <Canvas Name="myCanvas">
-                    <StackPanel Name="myTreeViewStackpanel" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button Name="btnLocalTestData" BorderThickness="2"  VerticalAlignment="Center">上传本地数据</Button>
-                        <Button Name="btnSeverTestData"  BorderThickness="2" VerticalAlignment="Center">下载服务器数据</Button>
+                <Canvas Name="myChartCanvas" Visibility="Visible">
+                    <Chart:TChart  x:Name="Chart" Loaded="TChart_Loaded"/>
+                </Canvas>
+                <Canvas x:Name="myCanvas" >
+                    <StackPanel x:Name="myTreeViewStackpanel" Orientation="Horizontal" VerticalAlignment="Center" >
+                        <Button x:Name="btnSeverTestData"   Style="{StaticResource TextButtonStyle}"  Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" TabIndex="10" Background="Black" Foreground="White" BorderBrush="White" Content="下载数据" />
+                        <Button x:Name="btnLocalTestData"  Style="{StaticResource TextButtonStyle}"  Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" TabIndex="10" Background="Black" Foreground="White" BorderBrush="White" Content="上传数据"/>
                     </StackPanel>
-                    <TreeView Name="myParentTree" FontWeight="ExtraBlack">
-                    </TreeView>
-                    <Button Name="btnAddNew" Width="70" Height="30">新建</Button>
-                    <Button Name="btnDelete" Width="70" Height="30">删除</Button>
-                    <TextBlock Name="txt_ShowOrHide" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Black" Foreground="White" TextWrapping="WrapWithOverflow" FontSize="12" FontWeight="ExtraBlack">变压器信息展示窗口</TextBlock>
+                    <TreeView x:Name="myParentTree" FontWeight="ExtraBlack" />
+                    <Button x:Name="btnAddNew" Style="{StaticResource TextButtonStyle}" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="70" TabIndex="5" Background="Black" Foreground="White" BorderBrush="White" Content="新建" />
+                    <Button x:Name="btnDelete" Style="{StaticResource TextButtonStyle}"  Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="70" TabIndex="5" Background="Black" Foreground="White" BorderBrush="White" Content="删除" />
+                    <TextBlock x:Name="txt_ShowOrHide" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Black" Foreground="White" TextWrapping="WrapWithOverflow" FontSize="12" FontWeight="ExtraBlack"><Run Text="变压器信息展示窗口"/></TextBlock>
                 </Canvas>
             </Canvas>
         </Grid>
+        <Grid Grid.Row="3" Grid.Column="1" Width="240">
+            <GroupBox  x:Name="myGroupBoxInChart" BorderThickness="0" HorizontalAlignment="Left" Background="#333333" Width="240"  >
+                <Grid HorizontalAlignment="Left" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="90" />
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.ColumnSpan="2" Grid.Row="0" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="1" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="2" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="3" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="4" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="5" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="6" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="7" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="3" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="135" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="10" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="11" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="12" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="13" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="14" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="15" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <Path Grid.ColumnSpan="2" Grid.Row="16" Data="M0.5,0.5 L179.5,0.5 L179.5,34.5 L0.5,34.5 z" Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" HorizontalAlignment="Center" Height="35" Stretch="Fill" Stroke="Black" VerticalAlignment="center" Width="250"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="0" x:Name="cb_ShowCursor"  BorderBrush="Blue" BorderThickness="1"  IsChecked="False"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" Content="显示游标"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="1" x:Name="cb_followMouse"  BorderBrush="Blue" BorderThickness="1"    IsChecked="False"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" Content="游标跟随鼠标"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="2" x:Name="cb_CurrentChannel_1"  BorderBrush="Blue" BorderThickness="1"  IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="0" Content="电流通道1曲线" />
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="3" x:Name="cb_CurrentChannel_2"  BorderBrush="Blue" BorderThickness="1"    IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="1" Content="电流通道2曲线"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="4" x:Name="cb_CurrentChannel_3"  BorderBrush="Blue" BorderThickness="1"  IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="2" Content="电流通道3曲线"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="5" x:Name="cb_WaveChannel_1"  BorderBrush="Blue" BorderThickness="1"    IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="3" Content="振动通道1曲线"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="6" x:Name="cb_WaveChannel_2"  BorderBrush="Blue" BorderThickness="1"  IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="4" Content="振动通道2曲线"/>
+                    <CheckBox Grid.ColumnSpan="2" Grid.Row="7" x:Name="cb_WaveChannel_3"  BorderBrush="Blue" BorderThickness="1"    IsChecked="True"  VerticalAlignment="Center" Foreground="AliceBlue" FontSize="14" FontWeight="Bold" TabIndex="5" Content="振动通道3曲线"/>
+
+                    <Grid Grid.RowSpan="2" Grid.Row="8" Width="220" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnLeftMove" Style="{StaticResource TextButtonStyle}" Height="25"  Width="50" TabIndex="5" FontSize="15" Background="Black" Foreground="White" BorderBrush="White"  Grid.Column="0" Margin="0" Content="左移"/>
+                        <Button x:Name="btnRightMove" Style="{StaticResource TextButtonStyle}" Height="25" Width="45" TabIndex="5" FontSize="15" Background="Black" Foreground="White" BorderBrush="White" Grid.Column="1" Margin="0" Content="右移"/>
+                        <Button x:Name="btnEnlarge" Style="{StaticResource TextButtonStyle}" Height="25" Width="45" TabIndex="5" FontSize="15" Background="Black" Foreground="White" BorderBrush="White" Grid.Column="2" Margin="0" Content="放大"/>
+                        <Button x:Name="btnNarrow" Style="{StaticResource TextButtonStyle}" Height="25"  Width="45" TabIndex="5" FontSize="15" Background="Black" Foreground="White" BorderBrush="White"  Grid.Column="3" Margin="0" Content="缩小"/>
+                        <RadioButton x:Name="btnShowAD" GroupName="show"  Height="30"  Width="160" TabIndex="5" FontSize="20" FontWeight="ExtraBold" Background="Black" Foreground="Wheat" BorderBrush="White"  Grid.Row="1" Grid.ColumnSpan="4" Margin="0" Content="显示AD值" HorizontalAlignment="Left"/>
+                        <RadioButton x:Name="btnShowFFT" GroupName="show"  Height="30"  Width="160" TabIndex="5" FontSize="20" FontWeight="ExtraBold" Background="Black" Foreground="Wheat" BorderBrush="White"  Grid.Row="2" Grid.ColumnSpan="4" Margin="0" Content="快速FFT" HorizontalAlignment="Left"/>
+                        <RadioButton x:Name="btnShowEffect" GroupName="show" Height="30"  Width="160" TabIndex="5" FontSize="20" FontWeight="ExtraBold" Background="Black" Foreground="Wheat" BorderBrush="White"  Grid.Row="3" Grid.ColumnSpan="4" Margin="0" Content="显示有效值" HorizontalAlignment="Left"/>
+
+
+
+                    </Grid>
+
+                    <TextBlock  Grid.Row="10" Grid.ColumnSpan="2" FontSize="15" Margin="1" VerticalAlignment="Center"><Run Text="注:双击表格还原"/></TextBlock>
+                    <Label x:Name="lab1" Grid.Row="11" Grid.ColumnSpan="2"  Width="180" BorderBrush="Wheat" BorderThickness="2" HorizontalAlignment="Left" Content="电流[通道1]:"/>
+                    <Label x:Name="lab2" Grid.Row="12" Grid.ColumnSpan="2"  Width="180"   BorderBrush="Wheat" BorderThickness="2"  HorizontalAlignment="Left" Content="电流[通道2]:"/>
+                    <Label x:Name="lab3" Grid.Row="13" Grid.ColumnSpan="2"   Width="180"  BorderBrush="Wheat" BorderThickness="2"  HorizontalAlignment="Left" Content="电流[通道3]:" />
+                    <Label x:Name="lab4" Grid.Row="14" Grid.ColumnSpan="2"  Width="180"   BorderBrush="Wheat" BorderThickness="2"  HorizontalAlignment="Left" Content="振动[通道1]:"/>
+                    <Label x:Name="lab5" Grid.Row="15" Grid.ColumnSpan="2"  Width="180"   BorderBrush="Wheat" BorderThickness="2"  HorizontalAlignment="Left" Content="振动[通道2]:"/>
+                    <Label x:Name="lab6" Grid.Row="16" Grid.ColumnSpan="2"  Width="180"    BorderBrush="Wheat" BorderThickness="2"  HorizontalAlignment="Left" Content="振动[通道3]:"/>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
         <!-- 第四层 Chart-->
         <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="Black" VerticalAlignment="Center">
-            <Label  Name="label_Debug" Foreground="White" FontSize="11" VerticalAlignment="Center" VerticalContentAlignment="Center" >DeBug</Label>
+            <Label  x:Name="label_Debug" Foreground="White" FontSize="11" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="DeBug" />
         </Grid>
         <!-- 第三层 Edit-->
         <Grid Grid.ColumnSpan="3"  Grid.Row="4" Background="Black">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Name="lablCurrentLineName" Content="国洲电力科技有限公司"  Background="Black" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="0" x:Name="lablCurrentLineName" Content="国洲电力科技有限公司"  Background="Black" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
-                <Label Foreground="White" FontSize="14" FontWeight="ExtraBlack" Name="myProgressLabel"></Label>
-                <ProgressBar Grid.Column="1" Name="myProgressBar"  Height="20"></ProgressBar>
+                <Label Foreground="White" FontSize="14" FontWeight="ExtraBlack" x:Name="myProgressLabel"/>
+                <ProgressBar Grid.Column="1" x:Name="myProgressBar"  Height="20"/>
             </Grid>
-        
-            <Label Grid.Column="3" Name="lablVoltge" Content="电压:"  Background="Black" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Grid.Column="3" x:Name="lablVoltge" Content="电压:"  Background="Black" Foreground="White" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         </Grid>
-        <Canvas Name="myControlCanvas"  Grid.Column="1" Grid.Row="3"  Background="Bisque" >
-            
-        </Canvas>
+        <Canvas x:Name="myControlCanvas" Visibility="Collapsed"  Grid.Column="1" Grid.Row="3"  Background="#333333" />
         <!-- Show Detail  第五层-->
+        <Canvas x:Name="_canstartTest" Height="500" Visibility="Hidden"  Grid.Row="3" Width="620" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="169,37,231,61" >
+            <Border BorderBrush="Black" BorderThickness="5,2" HorizontalAlignment="Left" Height="480" Margin="10" VerticalAlignment="Top" Width="600" CornerRadius="20">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.45*"/>
+                        <RowDefinition Height="0.45*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid  Margin="0" Grid.Row="2" VerticalAlignment="center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="15*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnCancelStart"  Content="取消" Height="40" Width="75" Style="{DynamicResource TextButtonStyle}" TabIndex="10" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderThickness="2" FontSize="24"   />
+                        <Button x:Name="btnConfrimStart"  Content="测试" Grid.Column="2" Height="40" Width="75" Style="{DynamicResource TextButtonStyle}" TabIndex="10" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Background="Black" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderThickness="2" FontSize="24"   />
+                    </Grid>
+                    <Border BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="6,2" HorizontalAlignment="Center" Height="200"  VerticalAlignment="Center" Width="560" CornerRadius="20">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="2"  Width="170" VerticalAlignment="Center" FontSize="18" Foreground="Black" Content="变压器所属单位:"/>
+                            <Label Grid.Column="1" Grid.Row="0" x:Name="tbCompanyName" VerticalAlignment="Center" FontSize="20"  Foreground="White" Content="变压器所属单位名称"/>
+                            <Label  Grid.Column="0" Grid.Row="1"  BorderBrush="Black" BorderThickness="2"  Width="170" VerticalAlignment="Center" FontSize="18" Foreground="Black" Content="当前测试变压器:"/>
+                            <Label Grid.Column="1" Grid.Row="1" x:Name="tbTransName" VerticalAlignment="Center" FontSize="20"  Foreground="White" Content="当前测试变压器名称"/>
+                            <Label Grid.Column="0" Grid.Row="2" BorderBrush="Black" BorderThickness="2"  Width="170" VerticalAlignment="Center" FontSize="18" Foreground="Black" Content="当前测试位置:" />
+                            <Label Grid.Column="0" Grid.Row="3" BorderBrush="Black" BorderThickness="2"  Width="170" VerticalAlignment="Center" FontSize="18" Foreground="Black" Content="开关切换方式:" />
+                            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                                <RadioButton   x:Name="rbForward"   Foreground="White" Background="Transparent"  BorderBrush="Black" BorderThickness="2"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" GroupName="ex" Margin="0" Height="30" Content="向下切换" />
+                                <RadioButton   x:Name="rbBackward" Foreground="White" Background="Transparent"  BorderBrush="Black" BorderThickness="2"   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" GroupName="ex" Margin="50,0,0,0" Height="30" IsChecked="True" Content="向上切换" />
+                            </StackPanel>
+                            <ComboBox   Grid.Row="2" Grid.Column="2"  x:Name="cmbCurrentPos" HorizontalAlignment="Left" Height="30" Margin="5" VerticalAlignment="Center" Width="190" FontSize="16" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="6,2" HorizontalAlignment="Center" Height="200"  VerticalAlignment="Center" Width="560" CornerRadius="20">
+                        <Grid  Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.ColumnSpan="2" Content="测试通道选择"  FontSize="24" FontWeight="Bold" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Path Grid.Column="0" Grid.Row="1"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <Path Grid.Column="1" Grid.Row="1"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <Path Grid.Column="0" Grid.Row="2"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <Path Grid.Column="1" Grid.Row="2"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <Path Grid.Column="0" Grid.Row="3"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <Path Grid.Column="1" Grid.Row="3"  Data="M1,6 C1,3.2385763 3.2385763,1 6,1 L154,1 C156.76142,1 159,3.2385763 159,6 L159,34 C159,36.761424 156.76142,39 154,39 L6,39 C3.2385763,39 1,36.761424 1,34 z" Height="40" Stretch="Fill" Stroke="#FF435AAA" StrokeThickness="4" Width="200"  />
+                            <CheckBox x:Name="ckbxCurrentChannel_1" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="电流通道1"/>
+                            <CheckBox x:Name="ckbxWaveChannel_1"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="振动通道1"/>
+                            <CheckBox x:Name="ckbxCurrentChannel_2"  Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="电流通道2"/>
+                            <CheckBox x:Name="ckbxWaveChannel_2"  Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="振动通道2"/>
+                            <CheckBox x:Name="ckbxCurrentChannel_3"  Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="电流通道3"/>
+                            <CheckBox x:Name="ckbxWaveChannel_3"  Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" IsChecked="True" Content="振动通道3"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+            </Border>
+
+
+        </Canvas>
     </Grid>
 </Window>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\dahe\GZDL411CSharp\HZGZDL.YZFJKGZXFXY.UI\HZGZDL.YZFJKGZXFXY.UI\obj\Debug\
+F:\工作\2017国州电力\交流有载\工程代码\HZGZDL.YZFJKGZXFXY.UI\GZDL\HZGZDL.YZFJKGZXFXY.UI\obj\Debug\
 HZGZDL.YZFJKGZXFXY.UI
 none
 false
 DEBUG;TRACE
-F:\dahe\GZDL411CSharp\HZGZDL.YZFJKGZXFXY.UI\HZGZDL.YZFJKGZXFXY.UI\App.xaml
-71503394227
-27-554504758
-101621960519
-191012287414
-ConnectionWindow.xaml;MainWindow.xaml;openDictortyWindow.xaml;Resources\ButtonStyle.xaml;Resources\GroupBoxStyle.xaml;SeverWindow.xaml;TransFormerSetWindow.xaml;
+F:\工作\2017国州电力\交流有载\工程代码\HZGZDL.YZFJKGZXFXY.UI\GZDL\HZGZDL.YZFJKGZXFXY.UI\App.xaml
+10-219994342
+39-1482492549
+16-1410223775
+27-6013833
+ConnectionWindow.xaml;MainWindow.xaml;openDictortyWindow.xaml;Page1.xaml;ParameterWindow.xaml;Resources\ButtonStyle.xaml;Resources\GroupBoxStyle.xaml;Resources\TextButton.xaml;SeverWindow.xaml;TransFormerSetWindow.xaml;
 
 False
 
